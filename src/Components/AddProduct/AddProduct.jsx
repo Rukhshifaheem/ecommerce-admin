@@ -36,7 +36,7 @@ const AddProduct = () => {
     };
   
     try {
-      const response = await axios.post("http://localhost:3000/product/addProduct", updatedProductDetails, {
+      const response = await axios.post("http://backend-rukhshifaheems-projects.vercel.app/product/addProduct", updatedProductDetails, {
         headers: { "Content-Type": "application/json" },
       });
   
