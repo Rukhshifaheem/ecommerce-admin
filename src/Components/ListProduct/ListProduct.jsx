@@ -7,7 +7,7 @@ const ListProduct = () => {
 
   const fetchAllProduct = async () => {
     try {
-      const response = await axios.get("http://backend-rukhshifaheems-projects.vercel.app/product/allProducts");
+      const response = await axios.get("https://backend-rukhshifaheems-projects.vercel.app/product/allProducts");
       setAllProduct(response.data);
     } catch (error) {
       console.error("Error fetching all product:", error);
@@ -20,7 +20,7 @@ const ListProduct = () => {
 
   const handleRemoveProduct = async (id) => {
     try {
-      const response = await axios.delete(`http://backend-rukhshifaheems-projects.vercel.app/deleteProduct/${id}`);
+      const response = await axios.delete(`https://backend-rukhshifaheems-projects.vercel.app/deleteProduct/${id}`);
       if (response.status === 200) {
         fetchAllProduct();
       }

@@ -26,7 +26,7 @@ const AdminDashboard = () => {
         }
         
         // Make the API call with the token
-        const response = await axios.get("http://backend-rukhshifaheems-projects.vercel.app/admin/all-carts", {
+        const response = await axios.get("https://backend-rukhshifaheems-projects.vercel.app/admin/all-carts", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
