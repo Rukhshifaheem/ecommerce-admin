@@ -29,22 +29,29 @@ const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    // Ensure image is stored in productDetails
     const updatedProductDetails = {
       ...productDetails,
-      image: image, // Store Base64 image
+      image: image, // Base64 image
     };
   
     try {
-      const response = await axios.post("https://backend-rukhshifaheems-projects.vercel.app/product/addProduct", updatedProductDetails, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true, // ✅ Add this line
-      });
+      // ✅ Get token from cookie
+      const token = document.cookie.match(/(^| )token=([^;]+)/)?.[2];
+  
+      const response = await axios.post(
+        "https://backend-rukhshifaheems-projects.vercel.app/product/addProduct",
+        updatedProductDetails,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // ✅ Send token manually
+          },
+        }
+      );
   
       if (response.status === 201) {
         setProductDetails({ name: "", new_price: "", old_price: "", category: "women", image: "" });
-        setImage(false); // Reset image preview
-        
+        setImage(false);
       }
     } catch (error) {
       console.error("Error adding product:", error);
