@@ -38,6 +38,7 @@ const AddProduct = () => {
     try {
       const response = await axios.post("https://backend-rukhshifaheems-projects.vercel.app/product/addProduct", updatedProductDetails, {
         headers: { "Content-Type": "application/json" },
+        withCredentials: true, // ✅ Add this line
       });
   
       if (response.status === 201) {
